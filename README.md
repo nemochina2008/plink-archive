@@ -14,7 +14,7 @@ install_github('philchalmers/plink-archived')
 library(plink)
 ```
 
-Prior to it's removal, the `mirt` package also supported a conversion function to port parameters into `plink`, and this is now available as a [gist]('https://gist.github.com/philchalmers/4614a7dfd764b4eb65a1') which can either be source manually or sourced with `devtools`:
+Prior to it's removal, the `mirt` package also supported a conversion function to port parameters into `plink`, and this is now available as a [gist](https://gist.github.com/philchalmers/4614a7dfd764b4eb65a1) which can either be source manually or sourced with `devtools`:
 
 ```r
 library(devtools)
