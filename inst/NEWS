@@ -1,0 +1,512 @@
+Changes in version: plink_1.3-1
+
+Bug Fixes:
+
+  o The value for D in {mixed} defaulted to 1 even when the 
+    argument was changed
+
+==============================
+
+Changes in version: plink_1.3-0
+
+Bug Fixes:
+
+  o The scoring function for {equate} accidentally defaulted to
+    2 instead of 1.
+
+  o True score equating using the graded response model returned
+    an error.
+
+
+Added Functionality:
+
+  o Least squares estimation added for the ODL, MIN, and LL methods
+    for multidimensional linking. This can be specified by setting
+    the argument {method="LS"}. When dilation="ODL" this uses the 
+    oblique procrustes rotation and returns the same results previously
+    returned by method="RM". In previous versions, the MIN and LL
+    methods could only be used with the characteristic curve methods.
+    The "LS" method is the now the default estimation approach
+    for multidimensional linking given that the results are more
+    stable than with the characteristic curve methods.
+
+  o Argument {items} added to drm, grm, gpcm, nrm, mcm, and mixed
+    that allows probabilities to be computed for a subset of items
+
+
+Misc:
+
+  o The default dilation for multidimensional linking was changed 
+    from "MIN" to "LL". This is because the LL method is technically
+    the only method that produces a symmetric transformation.
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.2-7
+
+Bug Fixes:
+
+  o The function read.multilog returned an error when the items are
+    modeled using a combination of the 2PL and 3PL. 
+
+  o The read.ltm function returned an error when trying to import
+    mixed-format item parameters estimated using grm or gpcm
+
+Misc:
+
+  o The sep.pars function was changed to allow individuals to specify
+    grm and gpcm items with only two response categories. 
+
+  o The group names for the object returned by drm, grm, gpcm, nrm,
+    mcm, and mixed defaults to the group names for the irt.pars object
+
+==============================
+
+Changes in version: plink_1.2-6
+
+Bug Fixes:
+
+  o The function read.multilog did not import item parameters properly
+     when certain polynomial contrasts were specified. 
+
+==============================
+
+Changes in version: plink_1.2-5
+
+Bug Fixes:
+
+  o When no starting values were specified when linking Rasch items, the
+    characteristic curve estimation would crash. 
+
+==============================
+
+Changes in version: plink_1.2-4
+
+  o A vignette was added which explains unidimensional linking with plink
+
+==============================
+
+Changes in version: plink_1.2-3
+
+Bug Fixes:
+
+  o Multidimensional item and ability parameters were not properly
+    rescaled with more than two groups when not all dimensions are 
+    common
+
+  o The get.prob function was not automatically loaded with the package
+
+
+Added Functionality:
+
+  o Function read.erm added to allow item parameters to be
+    imported from the eRm package
+
+  o Argument {save.hist} added to the plot functions. In previous versions
+    any plot history was eliminated prior to producing new plots. The
+    new default is to not delete any plot history
+
+
+Changed Functionality:
+
+  o The startvals argument for plink can now be specified as
+    a list so that different starting values can be used for 
+    different pairs of tests
+
+  o The default argument for {dilation} in plink changed to "MIN"
+
+
+Misc:
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.2-2
+
+Bug Fixes:
+
+  o The creation of an irt.pars object for multiple groups when
+    there are location parameters in one or more sets of items
+    was returning an error
+
+  o The specification of explicit scoring weights in plink
+    and equate when there are multiple groups could return an
+    error
+
+  o No ability descriptives were printed when using the
+    summary function when there are multiple groups
+
+
+Added Functionality:
+
+  o Function get.prob added to extract expected
+    probabilities from irt.prob objects
+
+
+Misc:
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.2-1
+
+  Changed Arguments:
+
+  o The mn.exclude argument in the plink function has been
+    replaced with a more general argument exclude that allows
+    common items associated with any response model, or specific
+    items, to be excluded when estimating the linking constants 
+
+
+  Added Functionality:
+
+  o The plink function now allows NRM and MCM items to be used
+    for the Stocking-Lord method (note: caution should be taken
+    when using these models because TCCs are not adequately defined
+    unless the parameters correspond to ordered categories)
+
+  o The MCM can now be used for true-score and observed score equating
+
+
+  Plotting:
+
+  o Item numbers can now be plotted on the drift plots
+    for the parameter comparisons
+
+  o ICCs and TCCs can now be plotted as part of the drift argument
+
+  o An argument drift.sd has been added to change the size of the
+    confidence region for the parameter comparison plots
+
+  o The comparison plots now use the SD line rather than the 
+    45 degree line
+
+
+  Misc:
+
+  o Summary function now prints descriptive statistics for 
+    rescaled ability estimates when summarizing the output
+    from plink (if applicable)
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.2-0
+
+  o Function equate added for conducting IRT
+    true score and observed score equating
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.1-6
+
+  Bug Fixes:
+
+  o Upper and lower bounds for the estimates for the characteristic curve
+    methods were removed because they have the potential to result in inaccurate
+    estimates when there are three or more groups
+
+  o The specification of different weights for different pairs of groups
+    now works properly
+
+
+  Misc:
+
+  o A warning message was added to the Reckase-Martineau approach
+    when the rotation matrix is not positive definite
+
+  o Group name labels added to plots for multiple groups
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.1-5
+
+  Bug Fixes:
+
+  o IMPORTANT - in the plink function, the incorrect parameters were
+    being optimized for the multidimensional characteristic curve methods
+
+  o Fix for the separation of multidimensional NRM and multidimensional
+    MCM item parameters in the sep.pars function
+
+
+  Changed Arguments:
+
+  o The default value for the rescale.com argument in plink has been
+    changed from FALSE to TRUE  
+
+  o The weights argument in plink changed to weights.t and weights.f
+
+  o The functionality of the mn.exclude argument in plink was changed
+
+
+  Plotting:
+
+  o Included functionality to plot comparisons of common item parameters, 
+    for examining parameter drift
+
+  o Now able to plot results for multiple groups
+
+  o Plot function includes additional arguments - drift, groups, 
+    grp.names, and sep.mod (see the documentation for more info)
+
+  
+  Misc:
+
+  o Updates to the class definition for irt.prob. This class now includes
+    a slot for scaling constants D
+
+  o Additional validation checks (and error comments) have been added
+    to the irt.pars class and sep.pars class
+
+  o All of the source code now includes extensive comments
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.1-4
+
+  Bug Fixes:
+
+  o Fix in plink for scenarios where there is only a single polytomous
+    item corresponding for a given model
+
+
+  Changed Arguments:
+
+  o The default value for the as.irt.pars argument for the functions
+    read.bilog, read.parscale, read.multilog, read.testfact, read.icl
+    read.bmirt, and read.ltm was changed to TRUE
+
+  o The default value for D in the functions drm, gpcm, and grm was
+    changed from D = 1.7 to D = 1. NOTE: This will change estimated
+    linking constants relative to previous versions unless D is 
+    explicitly set to D = 1.7.
+
+  o New argument rescale.com was added to the plink function
+
+  o New argument sign.adjust was added to the read.bmirt function
+
+
+  Misc:
+
+  o Arguments D.drm, D.gpcm, and D.grm can be passed to plink, mixed,
+    and plot to specify different scaling constants for the respective
+    models
+
+  o Functionality was added to create panels of vectorplots when the
+    items measure more than two dimensions
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.1-3
+
+  Bug Fixes:
+
+  o Fix for the plot function related to sending plots to an external file
+
+
+  Changed Arguments:
+
+  o The default value for the symmetric argument in the plink function
+    was changed to FALSE
+
+  Misc:
+
+  o The plink function was modified to speed up convergence for
+    the characteristic curve methods (particularly for the multidimensional
+    methods)
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.1-2
+
+  Bug Fixes:
+
+  o Fix for the function read.bmirt when importing item parameters
+
+  o Fix in sep.pars for the re-ordering of items
+
+  o Fix for plot.irt.pars regarding how arguments are passed
+
+  o Fix for plot.irt.prob for the default axes ranges for the
+    three vectorplots
+
+  Misc:
+
+  o Some corrections to the .Rd files
+
+==============================
+
+Changes in version: plink_1.1-1
+
+  Bug Fixes:
+
+  o Miscellaneous fixes for the functions read.icl and read.bmirt
+
+  o Fix for the matrix formulation of theta for multidimensional models
+    for drm, grm, gpcm, nrm, mcm, and mixed
+
+==============================
+
+Changes in version: plink_1.1-0
+
+  o Functions read.multilog, read.icl, read.bmirt, and read.ltm added for 
+    importing item/ability parameters from MULTILOG, ICL, BMIRT, and ltm
+    respectively
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_1.0-0
+
+  This is a major version change. All of the unidimensional item response
+  models and linking methods have been extended to the multidimensional case.
+  Arguments have been added to various functions that are relevant for the 
+  multidimensional extensions.
+
+  Item Response Models:
+
+  o Probabilities can now be computed for the following multidimensional models
+	- M1PL
+	- M2PL 
+	- M3PL 
+	- MD graded response model
+	- MD partial credit model
+    	- MD generalized partial credit model
+	- MD nominal response model
+    	- MD multiple-choice model (this model has not been formally introduced
+    	  in the literature)
+
+  o An argument {dimensions} has been added to all the functions that estimate 
+    response probabilities
+
+  Linking Methods: 
+
+  o The following multidimensional linking methods have been added
+	- Reckase-Martineau
+      - MD Haebara
+      - MD Stocking-Lord
+
+  o For the MD Haebara and MD Stocking-Lord methods there are three dilation options
+      - Oshima-Davey-Lee (estimate all elements of the rotation matrix)
+	- Li-Lissitz (orthogonal rotation with single dilation parameter)
+	- Min (orthogonal rotation with multiple dilation parameters)
+
+  Plots:
+  
+  o Multidimensional surface plots (and conditional surface plots when there 
+  are more than two dimensions) can be created
+
+  o Vector plots for two-dimensional items can be created
+
+  o Argument added for selecting a subset of items 
+
+  Misc:
+
+  o Function read.testfact added for importing item/ability parameters from TESTFACT
+
+  o An argument {method} has been added to the link.con function so the
+    linking constants for specific methods can be extraced
+
+  o The as.weight function has been simplified and adjusted to compute
+    weights for multiple dimensions
+
+  o The display of summary information now has a cleaner look
+
+  o All of the .Rd files have been updated to reflect the above changes
+ 
+==============================
+
+Changes in version: plink_0.1-1
+
+  o Data for a set of mixed-format reading tests from a large-scale
+    assessment was added.
+
+  o Some additions to the .Rd files
+
+==============================
+
+Changes in version: plink_0.1-0
+
+  o Functions read.bilog and read.parscale added for importing
+    item/ability parameters from BILOG and PARSCALE respectively
+
+  o Bug fix in the sep.pars function for loc.out = TRUE
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_0.0-6
+
+  o Update to how weights can be computed in the as.weight function
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_0.0-5
+
+  o Corrections made to the output of group names in the plink function
+
+  o Correction made to the indexing of group names in the sep.pars function
+
+  o Updates to various labels printed by the summary functions
+
+  o Some corrections/additions to the .Rd files
+
+  o Citation file added
+
+==============================
+
+Changes in version: plink_0.0-4
+
+  o The functions link.con, link.pars, and link.ability added for extracting
+    information from the plink output
+
+  o Corrections made to the output of group names in the plink function
+
+  o Corrections made to the printing of group names in the summary.link function
+
+  o Corrections made to the handling of .SavedPlots in th plot.irt.prob function
+
+  o The combine.pars function was updated to handle data.frames
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_0.0-3
+
+  o Signature x="list", common="data.frame" was added to the plink function
+
+  o Some corrections/additions to the .Rd files
+
+==============================
+
+Changes in version: plink_0.0-2
+
+  o A correction to an index variable in the plink function was made (only affects the mcm model)
+
+==============================
+
+Changes in version: plink_0.0-1
+
+  o Description was updated
+
