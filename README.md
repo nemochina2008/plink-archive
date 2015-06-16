@@ -18,5 +18,5 @@ Prior to it's removal, the `mirt` package also supported a conversion function t
 
 ```r
 library(devtools)
-source_gist('philchalmers/plink-archived')
+source_gist('https://gist.github.com/philchalmers/4614a7dfd764b4eb65a1')
 ```
